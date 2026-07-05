@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "title": "Git Internals, Hands-On",
+  "skills": [
+    {
+      "id": "sk_objects",
+      "title": "The Object Model",
+      "lessons": [
+        {
+          "id": "ls_objects",
+          "title": "Blobs, trees, commits",
+          "difficulty": "intermediate",
+          "objectives": [
+            "Explain the four Git object types and how they reference each other",
+            "Trace a branch ref down to the blobs it ultimately points at"
+          ],
+          "prerequisites": ["Everyday Git usage (commit, branch, merge)"],
+          "blocks": [
+            {
+              "id": "b_obj_intro",
+              "type": "prose",
+              "markdown": "## Git is a content-addressed database\n\nEverything in `.git/objects` is one of four object types, keyed by the SHA-1 of its content:\n\n- **blob** — file contents (no name, no mode)\n- **tree** — a directory: names + modes pointing at blobs/trees\n- **commit** — a tree + parents + author + message\n- **tag** — an annotated pointer\n\nBranches are just files containing a commit hash. That's the whole trick."
+            },
+            {
+              "id": "b_obj_diagram",
+              "type": "diagram",
+              "mermaid": "graph TD; HEAD-->main; main-->C2[commit C2]; C2-->C1[commit C1]; C2-->T2[tree]; T2-->B1[blob README.md]; T2-->T3[tree src/]; T3-->B2[blob main.ts];",
+              "caption": "A commit points at a tree; trees point at blobs and other trees."
+            },
+            {
+              "id": "b_obj_callout",
+              "type": "callout",
+              "variant": "tip",
+              "markdown": "`git cat-file -p <hash>` pretty-prints **any** object. It's the single best tool for building intuition — poke at real objects in a real repo as you go."
+            },
+            {
+              "id": "b_obj_quiz",
+              "type": "quiz",
+              "xp": 20,
+              "question": "A branch in Git is…",
+              "options": [
+                { "id": "a", "text": "A copy of the working directory" },
+                { "id": "b", "text": "A file containing a commit hash" },
+                { "id": "c", "text": "A linked list stored in the index" },
+                { "id": "d", "text": "A remote tracking configuration" }
+              ],
+              "verify": { "method": "answer-key", "answer": ["b"] }
+            },
+            {
+              "id": "b_obj_exercise",
+              "type": "exercise",
+              "xp": 25,
+              "instructions": "In any Git repo, run `git cat-file -t HEAD`. What object type does it print? (Type exactly what the command outputs.)",
+              "placeholder": "output of git cat-file -t HEAD",
+              "verify": { "method": "expected-output", "expected": "commit" }
+            },
+            {
+              "id": "b_obj_bridge",
+              "type": "agent-bridge",
+              "label": "Fuzzy on trees vs the index? Talk it through with your agent.",
+              "intent": "tutor",
+              "context": {
+                "include": ["block:b_obj_intro", "block:b_obj_quiz"],
+                "note": "Focus on the object model as a graph, not on porcelain commands."
+              }
+            }
+          ]
+        },
+        {
+          "id": "ls_plumbing",
+          "title": "Plumbing in practice",
+          "blocks": [
+            {
+              "id": "b_plumb_callout",
+              "type": "callout",
+              "variant": "warning",
+              "markdown": "Plumbing commands (`hash-object`, `update-ref`, `cat-file`) **will let you corrupt a repo**. Practice in a throwaway directory, not in your dotfiles."
+            },
+            {
+              "id": "b_plumb_code",
+              "type": "code",
+              "language": "bash",
+              "source": "mkdir scratch && cd scratch && git init\necho 'hello metis' | git hash-object -w --stdin\n# → writes a blob, prints its full 40-char hash\ngit log --oneline -1   # after your first commit"
+            },
+            {
+              "id": "b_plumb_exercise",
+              "type": "exercise",
+              "xp": 25,
+              "instructions": "Create a scratch repo, make one commit, then paste the output of `git log --oneline -1` (short hash + message).",
+              "placeholder": "e.g. 3f2a91c initial commit",
+              "verify": { "method": "regex", "pattern": "^[0-9a-f]{7,40}\\s+\\S" }
+            },
+            {
+              "id": "b_plumb_artifact",
+              "type": "exercise",
+              "xp": 30,
+              "instructions": "Push your scratch repo to GitHub (public) and link a commit where you created a blob with `hash-object`. Evidence, not vibes.",
+              "placeholder": "https://github.com/you/scratch/commit/…",
+              "verify": { "method": "artifact-url" }
+            },
+            {
+              "id": "b_plumb_attest",
+              "type": "exercise",
+              "xp": 10,
+              "instructions": "Read the \"Git Internals — Git Objects\" chapter of Pro Git (10.2). No proof needed — this one's on your honor.",
+              "verify": { "method": "self-attest" }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
