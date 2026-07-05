@@ -1,11 +1,11 @@
-# agent-skills
+# metis-skills
 
-Public [Agent Skills](https://www.skills.sh/) by [@Kerubi-5](https://github.com/Kerubi-5).
+Public [Agent Skills](https://www.skills.sh/) for **Metis** — a momentum engine that renders AI-authored learning plans, verifies every rep server-side, and mints XP only for machine-checkable work. Sibling of [`kairos-skill`](https://github.com/TheKimDevs/kairos-skill).
 
 ## Install
 
 ```bash
-npx skills add Kerubi-5/agent-skills
+npx skills add Kerubi-5/metis-skills
 ```
 
 ## Skills
