@@ -2,9 +2,12 @@
 
 The schema is validated with zod at import. Unknown **block types** are
 accepted (open union — a newer Metis may render them; older ones show a
-graceful placeholder), but malformed *known* types and unknown top-level
-fields on known types are rejected. Evolve additively; never repurpose a
-field.
+graceful placeholder). Malformed *known* types are rejected; unknown extra
+fields on known types are silently stripped — don't rely on them surviving.
+Evolve additively; never repurpose a field.
+
+Id convention (from the examples, not enforced): `sk_` skills, `ls_`
+lessons, `b_` blocks — short, snake_case, descriptive.
 
 ## Plan
 
