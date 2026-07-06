@@ -88,7 +88,10 @@
               "xp": 25,
               "instructions": "Create a scratch repo, make one commit, then paste the output of `git log --oneline -1` (short hash + message).",
               "placeholder": "e.g. 3f2a91c initial commit",
-              "verify": { "method": "regex", "pattern": "^[0-9a-f]{7,40}\\s+\\S" }
+              "verify": {
+                "method": "regex",
+                "pattern": "^[0-9a-f]{7,40}\\s+\\S"
+              }
             },
             {
               "id": "b_plumb_artifact",
