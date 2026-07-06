@@ -10,8 +10,8 @@ npx skills add Kerubi-5/metis-skills
 
 ## Skills
 
-| Skill | What it does |
-|---|---|
+| Skill                                     | What it does                                                                                                                                                                                                                      |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`metis-plan-author`](metis-plan-author/) | Author learning plans (schema v1 JSON) for Metis — a gamified renderer that verifies every rep server-side and mints XP only for machine-checkable work. Schema reference, XP-design rules, and a complete example plan included. |
 
 ## License

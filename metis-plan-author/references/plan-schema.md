@@ -2,7 +2,7 @@
 
 The schema is validated with zod at import. Unknown **block types** are
 accepted (open union — a newer Metis may render them; older ones show a
-graceful placeholder). Malformed *known* types are rejected; unknown extra
+graceful placeholder). Malformed _known_ types are rejected; unknown extra
 fields on known types are silently stripped — don't rely on them surviving.
 Evolve additively; never repurpose a field.
 
@@ -60,6 +60,7 @@ ledger). `xp` is a positive integer; it only mints when the block has a
 ```jsonc
 { "id": "b2", "type": "code", "language": "typescript", "source": "…" }
 ```
+
 Syntax-highlighted (shiki). Use real, runnable snippets.
 
 ### callout
@@ -72,9 +73,14 @@ Syntax-highlighted (shiki). Use real, runnable snippets.
 ### diagram
 
 ```jsonc
-{ "id": "b4", "type": "diagram", "mermaid": "graph TD; A-->B;",
-  "caption": "optional" }
+{
+  "id": "b4",
+  "type": "diagram",
+  "mermaid": "graph TD; A-->B;",
+  "caption": "optional",
+}
 ```
+
 Rendered client-side with mermaid (strict security level). Broken source
 degrades to showing the code — but write valid mermaid anyway.
 
@@ -88,6 +94,7 @@ degrades to showing the code — but write valid mermaid anyway.
   "verify": { "method": "answer-key", "answer": ["a"] }  // every entry must be an option id
 }
 ```
+
 `answer` with >1 entries renders as checkboxes (multi-select, exact set
 match, order-insensitive). Single entry renders as radios.
 
@@ -102,12 +109,12 @@ match, order-insensitive). Single entry renders as radios.
 }
 ```
 
-| verify | fields | notes |
-|---|---|---|
-| `{ "method": "expected-output", "expected": "…" }` | exact match after trim + CRLF→LF | pick machine-stable outputs |
-| `{ "method": "regex", "pattern": "…", "flags": "i" }` | pattern ≤500 chars, flags ⊆ `imsu` | for varying output (hashes, paths) |
-| `{ "method": "artifact-url" }` | learner submits an https URL | evidence tier: mints hard XP, revocable |
-| `{ "method": "self-attest" }` | one-click honor system | participation XP only, never spendable |
+| verify                                                | fields                             | notes                                   |
+| ----------------------------------------------------- | ---------------------------------- | --------------------------------------- |
+| `{ "method": "expected-output", "expected": "…" }`    | exact match after trim + CRLF→LF   | pick machine-stable outputs             |
+| `{ "method": "regex", "pattern": "…", "flags": "i" }` | pattern ≤500 chars, flags ⊆ `imsu` | for varying output (hashes, paths)      |
+| `{ "method": "artifact-url" }`                        | learner submits an https URL       | evidence tier: mints hard XP, revocable |
+| `{ "method": "self-attest" }`                         | one-click honor system             | participation XP only, never spendable  |
 
 ### agent-bridge
 
@@ -122,6 +129,7 @@ match, order-insensitive). Single entry renders as radios.
   }
 }
 ```
+
 **Must not** carry `xp` or `verify` — the schema rejects it. Metis packages
 the referenced blocks (answer keys stripped) and hands off to the learner's
 own agent.
