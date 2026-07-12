@@ -37,14 +37,14 @@ gating.
 
 A block's `verify` method — not its author — decides what its `xp` is worth:
 
-| verify method | check | XP track |
-|---|---|---|
-| quiz `answer-key` | exact answer set | **hard** (spendable) |
-| exercise `expected-output` | normalized string match | **hard** |
-| exercise `regex` | pattern match | **hard** |
-| exercise `artifact-url` | evidence link, revocable | **hard** |
-| exercise `self-attest` | honor system | participation only |
-| no `verify` (prose/code/callout/diagram/agent-bridge) | — | none |
+| verify method                                         | check                    | XP track             |
+| ----------------------------------------------------- | ------------------------ | -------------------- |
+| quiz `answer-key`                                     | exact answer set         | **hard** (spendable) |
+| exercise `expected-output`                            | normalized string match  | **hard**             |
+| exercise `regex`                                      | pattern match            | **hard**             |
+| exercise `artifact-url`                               | evidence link, revocable | **hard**             |
+| exercise `self-attest`                                | honor system             | participation only   |
+| no `verify` (prose/code/callout/diagram/agent-bridge) | —                        | none                 |
 
 Design accordingly: put real XP on machine-checkable reps; use self-attest
 sparingly for reading/watching tasks; `agent-bridge` must carry **no xp and
