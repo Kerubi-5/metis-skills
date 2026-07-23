@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 2,
+  "title": "Pull-up readiness (90 days)",
+  "goal": "Perform 1 clean unassisted pull-up",
+  "horizonDays": 90,
+  "phases": [
+    {
+      "id": "phase-scapular",
+      "title": "Scapular strength",
+      "weekStart": 1,
+      "weekEnd": 4,
+      "habits": [
+        {
+          "id": "hang-daily",
+          "title": "Dead hang",
+          "cadence": "daily",
+          "prompt": "3 sets of dead hangs, 20–40 seconds each. Rest as needed. Stop if elbows hurt.",
+          "notePrompt": "Longest hang (seconds) and how grips felt",
+          "xp": 20,
+          "verify": { "method": "self-attest" },
+          "coach": { "label": "Ask buddy about form", "intent": "coach" }
+        },
+        {
+          "id": "scap-pulls",
+          "title": "Scapular pulls",
+          "cadence": "daily",
+          "prompt": "3×8 scapular pull-ups (from a dead hang, shrug shoulders down/back without bending elbows).",
+          "notePrompt": "Quality 1–5 and any shoulder fatigue",
+          "xp": 15,
+          "verify": { "method": "self-attest" }
+        }
+      ]
+    },
+    {
+      "id": "phase-negatives",
+      "title": "Controlled negatives",
+      "weekStart": 5,
+      "weekEnd": 8,
+      "habits": [
+        {
+          "id": "negatives",
+          "title": "Negative pull-ups",
+          "cadence": "daily",
+          "prompt": "3×3–5 slow negatives (3–5 second lower). Jump or step to the top; lower with control.",
+          "notePrompt": "Slowest rep time and sticking point",
+          "xp": 25,
+          "verify": { "method": "artifact-url" },
+          "coach": { "label": "Review progress", "intent": "review" }
+        },
+        {
+          "id": "hang-maintain",
+          "title": "Hang maintain",
+          "cadence": "daily",
+          "prompt": "2×30–45s dead hang after negatives.",
+          "xp": 10,
+          "verify": { "method": "self-attest" }
+        }
+      ]
+    },
+    {
+      "id": "phase-assisted",
+      "title": "Assisted reps",
+      "weekStart": 9,
+      "weekEnd": 11,
+      "habits": [
+        {
+          "id": "assisted",
+          "title": "Band or foot-assisted pull-ups",
+          "cadence": "daily",
+          "prompt": "4×3–6 assisted pull-ups. Use the lightest assistance that keeps form clean.",
+          "notePrompt": "Assistance used and total clean reps",
+          "xp": 25,
+          "verify": { "method": "artifact-url" }
+        },
+        {
+          "id": "negatives-keep",
+          "title": "Finisher negatives",
+          "cadence": "daily",
+          "prompt": "2×3 slow negatives after assisted sets.",
+          "xp": 15,
+          "verify": { "method": "self-attest" }
+        }
+      ]
+    },
+    {
+      "id": "phase-attempt",
+      "title": "Unassisted attempts",
+      "weekStart": 12,
+      "weekEnd": 13,
+      "habits": [
+        {
+          "id": "attempt",
+          "title": "Pull-up attempts",
+          "cadence": "daily",
+          "prompt": "Warm up, then attempt 1–3 unassisted pull-ups. Film one attempt. If none yet, do 3 assisted + 3 negatives.",
+          "notePrompt": "Did you get chin over bar? What limited you?",
+          "xp": 30,
+          "verify": { "method": "artifact-url" },
+          "coach": { "label": "Replan if stuck", "intent": "review" }
+        }
+      ]
+    }
+  ]
+}

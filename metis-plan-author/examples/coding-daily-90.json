@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "title": "Code every day (90 days)",
+  "goal": "Ship a consistent daily coding habit for the next 3 months",
+  "horizonDays": 90,
+  "phases": [
+    {
+      "id": "phase-start",
+      "title": "Show up small",
+      "weekStart": 1,
+      "weekEnd": 3,
+      "habits": [
+        {
+          "id": "code-20",
+          "title": "20 focused minutes",
+          "cadence": "daily",
+          "prompt": "Open your project and code for at least 20 uninterrupted minutes. Tiny progress counts.",
+          "notePrompt": "What did you touch? One sentence.",
+          "xp": 20,
+          "verify": { "method": "self-attest" },
+          "coach": { "label": "Unstick me", "intent": "coach" }
+        }
+      ]
+    },
+    {
+      "id": "phase-build",
+      "title": "Build momentum",
+      "weekStart": 4,
+      "weekEnd": 8,
+      "habits": [
+        {
+          "id": "code-30",
+          "title": "30 focused minutes",
+          "cadence": "daily",
+          "prompt": "Code for 30 focused minutes on one concrete task. End by writing tomorrow's next step.",
+          "notePrompt": "Task + tomorrow's next step",
+          "xp": 25,
+          "verify": { "method": "self-attest" }
+        },
+        {
+          "id": "ship-link",
+          "title": "Leave a trail",
+          "cadence": "daily",
+          "prompt": "Push a commit or open a PR / gist and paste the https link as evidence.",
+          "notePrompt": "What shipped?",
+          "xp": 20,
+          "verify": { "method": "artifact-url" }
+        }
+      ]
+    },
+    {
+      "id": "phase-sustain",
+      "title": "Sustain & review",
+      "weekStart": 9,
+      "weekEnd": 13,
+      "habits": [
+        {
+          "id": "code-45",
+          "title": "45 focused minutes",
+          "cadence": "daily",
+          "prompt": "45 minutes of deep work. Prefer finishing something small over starting something big.",
+          "notePrompt": "Finished vs started?",
+          "xp": 25,
+          "verify": { "method": "self-attest" },
+          "coach": { "label": "Weekly review", "intent": "review" }
+        }
+      ]
+    }
+  ]
+}

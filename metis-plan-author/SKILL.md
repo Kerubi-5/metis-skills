@@ -1,76 +1,76 @@
 ---
 name: metis-plan-author
 description: >
-  Author learning plans for Metis, a gamified renderer that verifies every
-  rep server-side and mints XP only for machine-checkable work. Use when
-  asked to create, review, or fix a Metis plan / learning-plan JSON
-  (schema v1), design quizzes or exercises for Metis, or convert a syllabus,
-  roadmap, or course outline into an importable Metis plan.
+  Author HabitPack programs for Metis, an accountability buddy that runs
+  daily check-ins, mints XP for attested or evidenced reps, and keeps
+  streaks. Use when asked to create a Metis habit program from a goal
+  (e.g. pull-ups in 3 months, code every day, learn guitar), review or
+  fix HabitPack JSON (schema v2), or convert a practice roadmap into an
+  importable Metis pack.
 license: MIT
 ---
 
-# Authoring Metis plans
+# Authoring Metis HabitPacks
 
-Metis renders **AI-authored JSON** as an interactive, gamified learning
-experience — you (the agent) write the plan, Metis renders and verifies it.
-Your output is a single JSON document the user pastes into Metis's import
-box. It is validated strictly at import: get the schema right or the import
-is rejected with errors.
+Metis is an **accountability buddy**, not a course renderer. You (the agent)
+turn a goal into a progressive HabitPack JSON; Metis runs daily check-ins,
+XP, streaks, and the shop. Output a single JSON document the user pastes
+into Metis's import box (or sends via `import_habit_pack`). Import validates
+strictly — schema mistakes are rejected.
 
-Full field-by-field reference: [references/plan-schema.md](references/plan-schema.md).
-Complete working example: [examples/git-internals-plan.json](examples/git-internals-plan.json).
+Full reference: [references/habit-pack-schema.md](references/habit-pack-schema.md).
 
-## Shape (schema v1)
+Examples:
+
+- Flagship: [examples/pullup-90-day.json](examples/pullup-90-day.json) — “pull-ups in 3 months”
+- [examples/coding-daily-90.json](examples/coding-daily-90.json) — daily coding habit
+- [examples/guitar-practice.json](examples/guitar-practice.json) — hobby practice
+
+## Shape (schema v2)
 
 ```
-Plan { schemaVersion: 1, title, skills[] }
-└─ Skill { id, title, lessons[] }
-   └─ Lesson { id, title, objectives?, prerequisites?, difficulty?, blocks[] }
-      └─ Block { id, type, xp?, verify?, ...type fields }
+HabitPack { schemaVersion: 2, title, goal, horizonDays, phases[] }
+└─ Phase { id, title, weekStart, weekEnd, habits[] }
+   └─ Habit { id, title, cadence: "daily", prompt, notePrompt?, xp?, verify?, coach? }
 ```
 
-Block types: `prose`, `code`, `callout`, `diagram` (mermaid), `quiz`,
-`exercise`, `agent-bridge`. Blocks render in array order; there is no
-gating.
+Phases advance by calendar week since pack import (`startedAt`). Today shows
+habits in the active phase only.
 
-## The XP contract (what makes plans motivating)
+## Goal → program workflow
 
-A block's `verify` method — not its author — decides what its `xp` is worth:
+1. Clarify the goal and horizon (default 90 days if the user says "3 months").
+2. Split into 3–5 progressive phases with non-overlapping week ranges covering the horizon.
+3. Put 1–3 **daily** habits per phase — concrete prompts, not vague intentions.
+4. Prefer `self-attest` for most reps (participation XP); use `artifact-url` when a photo/video/link proves the rep (hard XP).
+5. Deliver one fenced `json` block, no commentary inside.
 
-| verify method                                         | check                    | XP track             |
-| ----------------------------------------------------- | ------------------------ | -------------------- |
-| quiz `answer-key`                                     | exact answer set         | **hard** (spendable) |
-| exercise `expected-output`                            | normalized string match  | **hard**             |
-| exercise `regex`                                      | pattern match            | **hard**             |
-| exercise `artifact-url`                               | evidence link, revocable | **hard**             |
-| exercise `self-attest`                                | honor system             | participation only   |
-| no `verify` (prose/code/callout/diagram/agent-bridge) | —                        | none                 |
+**Example ask:** "I want to be able to do pull-ups in the next 3 months."
+→ Phases: scapular hangs → negatives → assisted → unassisted attempts.
 
-Design accordingly: put real XP on machine-checkable reps; use self-attest
-sparingly for reading/watching tasks; `agent-bridge` must carry **no xp and
-no verify** (a doorway is not a rep).
+## XP contract
 
-## Hard validation rules (import fails otherwise)
+| verify method  | check          | XP track             |
+| -------------- | -------------- | -------------------- |
+| `artifact-url` | https evidence | **hard** (spendable) |
+| `self-attest`  | honor system   | participation only   |
+| no `verify`    | guidance only  | none                 |
 
-- `schemaVersion` must be exactly `1`
-- block `id`s unique across the **whole plan** (they key the XP ledger)
-- every quiz `verify.answer` entry must be one of its `options[].id`
-- quiz needs ≥2 options; multi-answer quizzes render as checkboxes
-  automatically (say "select all that apply" in the question)
-- exercise regex `flags` limited to `imsu`; pattern ≤500 chars
-- non-empty strings everywhere; every lesson needs ≥1 block
+`coach` is a BYOA doorway (label + `coach`|`review`) — never carries XP.
 
-## Authoring quality bar
+## Hard validation rules
 
-- Write for experienced engineers: dense prose, real code, no filler.
-- 3–6 blocks per lesson; end most lessons with a verified rep (quiz or
-  exercise) worth 20–30 XP so progress is felt.
-- Quizzes should test understanding, not recall of the prose's exact words;
-  make distractors plausible.
-- For `expected-output` exercises, choose commands whose output is stable
-  across machines (`git cat-file -t HEAD` → `commit`), or use `regex` when
-  output varies (hashes, timestamps).
-- Fill `objectives` and `difficulty` on lessons — Metis feeds them to the
-  learner's AI tutor for grounded help.
-- Self-check against the rules above before handing the JSON over; deliver
-  it in a single fenced `json` block with no commentary inside.
+- `schemaVersion` must be exactly `2`
+- habit `id`s unique across the whole pack
+- `weekEnd >= weekStart`; weeks 1-indexed
+- `cadence` is `"daily"` only (MVP)
+- non-empty strings; every phase needs ≥1 habit
+- `horizonDays` positive integer (≤ 3650)
+
+## Quality bar
+
+- Progressive overload: later phases should be harder / closer to the goal.
+- Prompts are what to do _today_, not essays.
+- End most phases with at least one verified habit so progress is felt.
+- Include `notePrompt` so session journals feed BYOA reflection.
+- Self-check schema rules before handing JSON over.

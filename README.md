@@ -1,19 +1,7 @@
 # metis-skills
 
-Public [Agent Skills](https://www.skills.sh/) for **Metis** — a momentum engine that renders AI-authored learning plans, verifies every rep server-side, and mints XP only for machine-checkable work. Sibling of [`kairos-skill`](https://github.com/TheKimDevs/kairos-skill).
+Public [Agent Skills](https://www.skills.sh/) for **Metis** — an accountability buddy that runs AI-authored HabitPack programs, verifies daily check-ins, and mints XP. Sibling of [`kairos-skill`](https://github.com/TheKimDevs/kairos-skill).
 
-## Install
-
-```bash
-npx skills add TheKimDevs/metis-skills
-```
-
-## Skills
-
-| Skill                                     | What it does                                                                                                                                                                                                                      |
-| ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`metis-plan-author`](metis-plan-author/) | Author learning plans (schema v1 JSON) for Metis — a gamified renderer that verifies every rep server-side and mints XP only for machine-checkable work. Schema reference, XP-design rules, and a complete example plan included. |
-
-## License
-
-[MIT](LICENSE)
+| Skill                                     | Purpose                                                                                              |
+| ----------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| [`metis-plan-author`](metis-plan-author/) | Author HabitPack programs (schema v2 JSON) from goals — progressive phases, daily habits, XP design. |

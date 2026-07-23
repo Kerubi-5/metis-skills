@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 2,
+  "title": "Guitar practice habit",
+  "goal": "Practice guitar most days and play one clean song start-to-finish",
+  "horizonDays": 60,
+  "phases": [
+    {
+      "id": "phase-foundation",
+      "title": "Foundation",
+      "weekStart": 1,
+      "weekEnd": 4,
+      "habits": [
+        {
+          "id": "warmup",
+          "title": "Warm-up + chords",
+          "cadence": "daily",
+          "prompt": "10 minutes: chromatic warm-up, then 5 minutes of open chords with a metronome.",
+          "notePrompt": "BPM and which chords felt sticky",
+          "xp": 15,
+          "verify": { "method": "self-attest" }
+        }
+      ]
+    },
+    {
+      "id": "phase-song",
+      "title": "Song focus",
+      "weekStart": 5,
+      "weekEnd": 9,
+      "habits": [
+        {
+          "id": "song-chunk",
+          "title": "Song chunk",
+          "cadence": "daily",
+          "prompt": "Practice one section of your target song for 15–20 minutes. Slow is fine.",
+          "notePrompt": "Which section? Clean take?",
+          "xp": 20,
+          "verify": { "method": "self-attest" },
+          "coach": { "label": "Practice tips", "intent": "coach" }
+        },
+        {
+          "id": "record-take",
+          "title": "Record a take",
+          "cadence": "daily",
+          "prompt": "Record one short take (phone is fine) and paste an https link.",
+          "xp": 25,
+          "verify": { "method": "artifact-url" }
+        }
+      ]
+    }
+  ]
+}
