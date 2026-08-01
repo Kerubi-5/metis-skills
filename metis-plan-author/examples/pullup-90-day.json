@@ -12,10 +12,10 @@
       "habits": [
         {
           "id": "hang-daily",
-          "title": "Dead hang",
+          "title": "Dead hang (rings or bar)",
           "cadence": "daily",
-          "prompt": "3 sets of dead hangs, 20–40 seconds each. Rest as needed. Stop if elbows hurt.",
-          "notePrompt": "Longest hang (seconds) and how grips felt",
+          "prompt": "3 sets of dead hangs, 20–40s each on rings (prefer) or a bar. False grip optional on rings. Rest as needed. Stop if elbows hurt.",
+          "notePrompt": "Equipment used, longest hang (seconds), how grips felt",
           "xp": 20,
           "verify": { "method": "self-attest" },
           "coach": { "label": "Ask buddy about form", "intent": "coach" }
@@ -24,7 +24,7 @@
           "id": "scap-pulls",
           "title": "Scapular pulls",
           "cadence": "daily",
-          "prompt": "3×8 scapular pull-ups (from a dead hang, shrug shoulders down/back without bending elbows).",
+          "prompt": "3×8 scapular pull-ups from a dead hang on rings or bar: shrug shoulders down/back without bending elbows.",
           "notePrompt": "Quality 1–5 and any shoulder fatigue",
           "xp": 15,
           "verify": { "method": "self-attest" }
@@ -41,8 +41,8 @@
           "id": "negatives",
           "title": "Negative pull-ups",
           "cadence": "daily",
-          "prompt": "3×3–5 slow negatives (3–5 second lower). Jump or step to the top; lower with control.",
-          "notePrompt": "Slowest rep time and sticking point",
+          "prompt": "3×3–5 slow negatives (3–5s lower) on rings or bar. Jump/step to the top; lower with control. Rings: keep rings close to the body.",
+          "notePrompt": "Equipment, slowest rep time, sticking point",
           "xp": 25,
           "verify": { "method": "artifact-url" },
           "coach": { "label": "Review progress", "intent": "review" }
@@ -51,7 +51,7 @@
           "id": "hang-maintain",
           "title": "Hang maintain",
           "cadence": "daily",
-          "prompt": "2×30–45s dead hang after negatives.",
+          "prompt": "2×30–45s dead hang on rings or bar after negatives.",
           "xp": 10,
           "verify": { "method": "self-attest" }
         }
@@ -65,18 +65,19 @@
       "habits": [
         {
           "id": "assisted",
-          "title": "Band or foot-assisted pull-ups",
+          "title": "Assisted ring / bar pull-ups",
           "cadence": "daily",
-          "prompt": "4×3–6 assisted pull-ups. Use the lightest assistance that keeps form clean.",
-          "notePrompt": "Assistance used and total clean reps",
+          "prompt": "4×3–6 assisted pull-ups. Prefer gymnast rings with feet or toes on the floor (lighten help over the weeks). Bar + band is fine if no rings. Use the least assistance that keeps form clean.",
+          "notePrompt": "Rings or bar, assistance used, total clean reps",
           "xp": 25,
           "verify": { "method": "artifact-url" }
         },
         {
-          "id": "negatives-keep",
-          "title": "Finisher negatives",
+          "id": "ring-rows",
+          "title": "Ring rows finisher",
           "cadence": "daily",
-          "prompt": "2×3 slow negatives after assisted sets.",
+          "prompt": "3×8–12 ring rows (body more horizontal = harder). Full scapular squeeze at the top. Skip only if no rings — then do 2×3 slow bar negatives instead.",
+          "notePrompt": "Body angle and how many clean reps",
           "xp": 15,
           "verify": { "method": "self-attest" }
         }
@@ -92,8 +93,8 @@
           "id": "attempt",
           "title": "Pull-up attempts",
           "cadence": "daily",
-          "prompt": "Warm up, then attempt 1–3 unassisted pull-ups. Film one attempt. If none yet, do 3 assisted + 3 negatives.",
-          "notePrompt": "Did you get chin over bar? What limited you?",
+          "prompt": "Warm up, then attempt 1–3 unassisted pull-ups on a bar (goal equipment). Film one attempt. If none yet: 3 assisted (feet on rings, or bar + band) + 3 negatives.",
+          "notePrompt": "Did chin clear the bar? What limited you?",
           "xp": 30,
           "verify": { "method": "artifact-url" },
           "coach": { "label": "Replan if stuck", "intent": "review" }

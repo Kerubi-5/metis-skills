@@ -47,6 +47,9 @@ habits in the active phase only.
 
 **Example ask:** "I want to be able to do pull-ups in the next 3 months."
 → Phases: scapular hangs → negatives → assisted → unassisted attempts.
+Prefer gymnast rings when the user has them (hangs, scapular pulls, feet-assisted
+ring pull-ups, ring rows); keep the goal attempt on a bar unless they say otherwise.
+Band/foot-assisted bar work remains a fine fallback.
 
 ## XP contract
 
@@ -71,6 +74,7 @@ habits in the active phase only.
 
 - Progressive overload: later phases should be harder / closer to the goal.
 - Prompts are what to do _today_, not essays.
+- Ask about available equipment and weave it into prompts (e.g. rings vs bar).
 - End most phases with at least one verified habit so progress is felt.
 - Include `notePrompt` so session journals feed BYOA reflection.
 - Self-check schema rules before handing JSON over.
